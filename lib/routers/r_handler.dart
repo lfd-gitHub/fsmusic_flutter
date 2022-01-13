@@ -67,7 +67,7 @@ class RDelegate extends RouterDelegate<String> with PopNavigatorRouterDelegateMi
   String? get currentConfiguration => _stack.isNotEmpty ? _stack.last.uri.toString() : null;
 
   bool _onPopPage(Route<dynamic> route, dynamic result) {
-    FsmLog.d(sTag, "_onPopPage ${route.settings}");
+    FLog.d(sTag, "_onPopPage ${route.settings}");
     if (route.didPop(result)) {
       _stack.removeLast().completer.complete(result);
       notifyListeners();
@@ -77,7 +77,7 @@ class RDelegate extends RouterDelegate<String> with PopNavigatorRouterDelegateMi
   }
 
   Future<dynamic> toUri(Uri uri, {bool replace = false, String? untilRouterName}) async {
-    FsmLog.d(sTag, "toUri[replace = $replace urn = $untilRouterName] $uri");
+    FLog.d(sTag, "toUri[replace = $replace urn = $untilRouterName] $uri");
     var info = RInfo(uri: uri);
     if (interceptors?.isNotEmpty == true) {
       for (var it in interceptors!) {
@@ -132,7 +132,7 @@ class RDelegate extends RouterDelegate<String> with PopNavigatorRouterDelegateMi
         );
       }).toList(),
       onGenerateRoute: (settings) {
-        FsmLog.d(sTag, "onGenerateRoute - ${settings.name}");
+        FLog.d(sTag, "onGenerateRoute - ${settings.name}");
       },
     );
   }

@@ -28,7 +28,7 @@ class Routes {
 }
 
 Future<bool> intercept(Uri uri) async {
-  FsmLog.d(sTag, "intercept = $uri");
+  FLog.d(sTag, "intercept = $uri");
   return false;
 }
 

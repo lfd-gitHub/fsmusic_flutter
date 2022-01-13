@@ -18,14 +18,14 @@ class HomePage extends StatelessWidget {
         children: [
           ListTile(
             onTap: () => RDelegate.of(context).toUri(Uri.parse(Routes.login)),
-            title: FsmText.def("登陆"),
+            title: const FText("登陆"),
           ),
           ListTile(
             onTap: () async {
               var r = await Nav.to(Routes.test, pArgs: ["111"], params: TestBean("999", 0));
-              FsmLog.d(sTag, "result = $r");
+              FLog.d(sTag, "result = $r");
             },
-            title: FsmText.def("Test"),
+            title: const FText("Test"),
           ),
           // const Divider(),
           // ListTile(

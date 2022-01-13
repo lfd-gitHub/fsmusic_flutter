@@ -16,7 +16,7 @@ String convertToUri(
     _path += "?";
     args!.forEach((key, value) => _path += "&$key=${Uri.encodeComponent(value)}");
   }
-  FsmLog.d(sTag, "$routeName $pathArgs $args => convertToUrl => $_path");
+  FLog.d(sTag, "$routeName $pathArgs $args => convertToUrl => $_path");
   return _path;
 }
 
@@ -59,7 +59,7 @@ bool matchedUriAndRName(String rName, Uri uri) {
   if (pUri == uri) {
     return true;
   }
-  FsmLog.d(sTag, "find $rName - $pSegs | $uri - ${uri.pathSegments}");
+  FLog.d(sTag, "find $rName - $pSegs | $uri - ${uri.pathSegments}");
   if (pSegs.length != uri.pathSegments.length) {
     return false;
   }
@@ -67,9 +67,9 @@ bool matchedUriAndRName(String rName, Uri uri) {
 }
 
 RPage? matchPage(Uri uri, List<RPage> pages) {
-  FsmLog.d(sTag, "matchPage uri = $uri search in $pages");
+  FLog.d(sTag, "matchPage uri = $uri search in $pages");
   var list = pages.where((page) => matchedUriAndRName(page.name, uri));
   assert(list.length == 1, "not matched strickly! ? $list");
-  FsmLog.d(sTag, "find result $list");
+  FLog.d(sTag, "find result $list");
   return list.isEmpty ? null : list.first;
 }

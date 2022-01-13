@@ -5,7 +5,7 @@ import 'package:fsmusic_flutter/routers/routes.dart';
 //import 'package:fsmusic_flutter/router/fsm_router.dart';
 import 'package:fsmusic_flutter/widgets/fsm_text.dart';
 
-class TestPage extends BasePage {
+class TestPage extends DefaultPage {
   final String id;
   final TestBean data;
 
@@ -24,7 +24,7 @@ class TestPage extends BasePage {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            FsmText.def("id = $id , data = $data"),
+            FText("id = $id , data = $data"),
             ElevatedButton(onPressed: () => Nav.pop("rrrrrr"), child: const Text("test pop with obj")),
           ],
         ),

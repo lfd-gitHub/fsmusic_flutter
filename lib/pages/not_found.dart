@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fsmusic_flutter/pages/basic/base_page.dart';
 import 'package:fsmusic_flutter/widgets/fsm_text.dart';
 
-class NotFoundPage extends BasePage {
+class NotFoundPage extends DefaultPage {
   const NotFoundPage({Key? key}) : super(key: key);
 
   @override
@@ -13,9 +13,9 @@ class NotFoundPage extends BasePage {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Icon(Icons.error_outline),
-        FsmText.def("404"),
+      children: const [
+        Icon(Icons.error_outline),
+        FText("404"),
       ],
     );
   }

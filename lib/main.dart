@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fsmusic_flutter/routers/routes.dart';
+import 'package:fsmusic_flutter/theme/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: primarySwatch,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       routeInformationParser: Nav.parser, // 路由信息解析
