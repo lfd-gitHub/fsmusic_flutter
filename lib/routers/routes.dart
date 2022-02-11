@@ -1,4 +1,4 @@
-import 'package:fsmusic_flutter/home.dart';
+import 'package:fsmusic_flutter/pages/home/home.dart';
 import 'package:fsmusic_flutter/pages/login/login.dart';
 import 'package:fsmusic_flutter/pages/not_found.dart';
 import 'package:fsmusic_flutter/pages/test/test.dart';
