@@ -10,6 +10,8 @@ const FontWeight bold = FontWeight.w700;
 
 class FText extends StatelessWidget {
   final String text;
+  final TextAlign? textAlign;
+  final double? lineHeight;
   final List<String>? appends;
   final double size;
   final List<double>? appendSizes;
@@ -18,11 +20,15 @@ class FText extends StatelessWidget {
   final Color color;
   final List<Color>? appendColors;
   final EdgeInsets padding;
+  final int maxLines;
   final void Function(int i)? onTap;
   const FText(
     this.text, {
     Key? key,
+    this.maxLines = 1,
     this.appends,
+    this.lineHeight,
+    this.textAlign,
     this.appendColors,
     this.appendSizes,
     this.appendWeights,
@@ -36,15 +42,19 @@ class FText extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
-      onTap: appends?.isNotEmpty == true ? null : (onTap == null ? null : () => onTap!.call(0)),
+      onTap: appends?.isNotEmpty == true
+          ? null
+          : (onTap == null ? null : () => onTap!.call(0)),
       child: Padding(
           padding: padding,
           child: appends?.isNotEmpty == true
               ? Text.rich(TextSpan(children: [
                   TextSpan(
-                    recognizer: TapGestureRecognizer()..onTap = () => onTap?.call(0),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () => onTap?.call(0),
                     text: text,
-                    style: TextStyle(fontWeight: weight, fontSize: size, color: color),
+                    style: TextStyle(
+                        fontWeight: weight, fontSize: size, color: color),
                   ),
                   ...appends!
                       .asMap()
@@ -58,16 +68,30 @@ class FText extends StatelessWidget {
                               },
                             text: value,
                             style: TextStyle(
-                                fontWeight: key < (appendWeights?.length ?? 0) ? appendWeights![key] : weight,
-                                fontSize: key < (appendSizes?.length ?? 0) ? appendSizes![key] : size,
-                                color: key < (appendColors?.length ?? 0) ? appendColors![key] : color),
+                                fontWeight: key < (appendWeights?.length ?? 0)
+                                    ? appendWeights![key]
+                                    : weight,
+                                fontSize: key < (appendSizes?.length ?? 0)
+                                    ? appendSizes![key]
+                                    : size,
+                                color: key < (appendColors?.length ?? 0)
+                                    ? appendColors![key]
+                                    : color),
                           ),
                         ),
                       )
                       .values
                       .toList()
                 ])) //
-              : Text(text, style: TextStyle(fontWeight: weight, fontSize: size, color: color))),
+              : Text(text,
+                  textAlign: textAlign,
+                  maxLines: maxLines,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                      fontWeight: weight,
+                      height: lineHeight,
+                      fontSize: size,
+                      color: color))),
     );
   }
 }
