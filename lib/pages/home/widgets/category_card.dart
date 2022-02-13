@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:fsmusic_flutter/widgets/fsm_image.dart';
 import 'package:fsmusic_flutter/widgets/fsm_text.dart';
 
-class CategoryBanner extends StatelessWidget {
+class CategoryCard extends StatelessWidget {
   final String title;
   final String desc;
   final String image;
 
   final VoidCallback? onTap;
 
-  const CategoryBanner(
+  const CategoryCard(
       {Key? key,
       this.onTap,
       required this.title,
