@@ -6,12 +6,14 @@ class CategoryCard extends StatelessWidget {
   final String title;
   final String desc;
   final String image;
+  final EdgeInsets margin;
 
   final VoidCallback? onTap;
 
   const CategoryCard(
       {Key? key,
       this.onTap,
+      this.margin = const EdgeInsets.symmetric(horizontal: 10),
       required this.title,
       required this.desc,
       required this.image})
@@ -24,7 +26,7 @@ class CategoryCard extends StatelessWidget {
         GestureDetector(
           onTap: onTap,
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            margin: margin,
             width: 140,
             height: 220,
             child: ClipRRect(
