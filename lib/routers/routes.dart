@@ -1,6 +1,7 @@
 import 'package:fsmusic_flutter/pages/home/home.dart';
 import 'package:fsmusic_flutter/pages/login/login.dart';
 import 'package:fsmusic_flutter/pages/not_found.dart';
+import 'package:fsmusic_flutter/pages/play_list/play_list.dart';
 import 'package:fsmusic_flutter/pages/test/test.dart';
 import 'package:fsmusic_flutter/routers/r_handler.dart';
 import 'package:fsmusic_flutter/routers/utils.dart';
@@ -14,12 +15,14 @@ class Routes {
   static const String login = "/login";
   static const String profile = "/profile/:id";
   static const String p404 = "/404";
+  static const String playList = "/play/list";
 
   static final RPage notFound = RPage(name: home, builder: (ctx, [_, __]) => const NotFoundPage());
 
   static final List<RPage> pages = [
     RPage(name: home, builder: (ctx, [_, __]) => const HomePage()),
     RPage(name: login, builder: (ctx, [_, __]) => const LoginPage()),
+    RPage(name: playList, builder: (ctx, [_, __]) => const PlayListPage()),
     RPage(
       name: test,
       builder: (ctx, [pArg, args]) => TestPage(id: pArg?["id"] ?? "0", data: TestBean.fromJson(args ?? {})),

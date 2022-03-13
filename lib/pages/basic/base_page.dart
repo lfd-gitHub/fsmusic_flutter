@@ -10,6 +10,7 @@ abstract class BasePage<SER extends BaseService<E, S>, E extends BaseEvent, S ex
 
   String? withTitle() => null;
   AppBar? withappBar() => null;
+  Color? bodyColor() => null;
 
   SER service();
 
@@ -33,6 +34,7 @@ abstract class BasePage<SER extends BaseService<E, S>, E extends BaseEvent, S ex
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: withappBar() ?? (withTitle() == null ? null : FsmAppbar.def(withTitle()!)),
+      backgroundColor: bodyColor(),
       body: BlocProvider(
         create: (ctx) => service(),
         child: BlocBuilder<SER, S>(

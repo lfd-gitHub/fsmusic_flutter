@@ -3,11 +3,12 @@ import 'package:fsmusic_flutter/pages/basic/base_event.dart';
 import 'package:fsmusic_flutter/pages/basic/base_page.dart';
 import 'package:fsmusic_flutter/pages/basic/base_service.dart';
 import 'package:fsmusic_flutter/pages/basic/base_state.dart';
-import 'package:fsmusic_flutter/pages/home/widgets/album_card.dart';
-import 'package:fsmusic_flutter/pages/home/widgets/category_card.dart';
-import 'package:fsmusic_flutter/pages/home/widgets/music_card.dart';
-import 'package:fsmusic_flutter/pages/home/widgets/musician_card.dart';
-import 'package:fsmusic_flutter/pages/home/widgets/scroll_section.dart';
+import 'package:fsmusic_flutter/pages/global/widgets/album_card.dart';
+import 'package:fsmusic_flutter/pages/global/widgets/category_card.dart';
+import 'package:fsmusic_flutter/pages/global/widgets/music_card.dart';
+import 'package:fsmusic_flutter/pages/global/widgets/musician_card.dart';
+import 'package:fsmusic_flutter/pages/global/widgets/scroll_section.dart';
+import 'package:fsmusic_flutter/routers/routes.dart';
 import 'package:fsmusic_flutter/widgets/common/badge.dart';
 import 'package:fsmusic_flutter/widgets/fsm_image.dart';
 import 'package:fsmusic_flutter/widgets/fsm_text.dart';
@@ -47,7 +48,7 @@ class HomePage extends BasePage<DefaultService, DefaultEvent, DefaultState> {
                   MusicianCard("musician-photo.png", "哈雷娜", "流星音乐"),
                   MusicianCard("musician-photo.png", "哈雷娜", "流星音乐"),
                 ]),
-                const ScrollSection(title: "推荐歌单", children: [
+                ScrollSection(title: "推荐歌单", onTap: (i) => Nav.to(Routes.playList), children: const [
                   AlbumCard("album.png", "哈雷娜", "流星音乐"),
                   AlbumCard("album.png", "哈雷娜", "流星音乐"),
                   AlbumCard("album.png", "哈雷娜", "流星音乐"),

@@ -5,10 +5,12 @@ class ScrollSection extends StatelessWidget {
   final EdgeInsets padding;
   final String? title;
   final List<Widget> children;
+  final ValueChanged<int>? onTap;
 
   const ScrollSection({
     Key? key,
     this.title,
+    this.onTap,
     required this.children,
     this.padding = const EdgeInsets.only(left: 15, right: 15, top: 22),
   }) : super(key: key);
@@ -21,7 +23,7 @@ class ScrollSection extends StatelessWidget {
       child: Row(
         children: [
           const SizedBox(width: 15),
-          ...children,
+          ...List.generate(children.length, (index) => GestureDetector(onTap: () => onTap?.call(index), child: children[index])),
           const SizedBox(width: 15),
         ],
       ),

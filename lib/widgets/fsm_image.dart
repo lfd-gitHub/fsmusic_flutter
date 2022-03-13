@@ -11,6 +11,6 @@ class FsmImage {
   }
 
   static Widget svg(String name, {double? width, double? height}) {
-    return SvgPicture.asset("assets/icons/$name", width: width, height: height);
+    return SvgPicture.asset("assets/svg/$name", width: width, height: height);
   }
 }

@@ -7,11 +7,13 @@ class MusicCard extends StatelessWidget {
   final String title;
   final String subTitle;
   final String cover;
+  final String type;
 
   const MusicCard(
     this.cover,
     this.title,
     this.subTitle, {
+    this.type = 'default',
     Key? key,
     this.padding = const EdgeInsets.only(left: 15, right: 15, top: 0, bottom: 10),
   }) : super(key: key);
@@ -26,11 +28,12 @@ class MusicCard extends StatelessWidget {
             alignment: Alignment.center,
             children: [
               FsmImage.circle(cover, 32),
-              Container(
-                width: 16,
-                height: 16,
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white),
-              )
+              if (type != 'detail')
+                Container(
+                  width: 16,
+                  height: 16,
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white),
+                )
             ],
           ),
           const SizedBox(width: 12),
@@ -42,7 +45,9 @@ class MusicCard extends StatelessWidget {
               const SizedBox(height: 4),
               FText(subTitle, size: 14, color: const Color(0xff7a869a))
             ],
-          )
+          ),
+          const Spacer(),
+          if (type == 'detail') IconButton(onPressed: () {}, icon: const Icon(Icons.favorite))
         ],
       ),
     );
